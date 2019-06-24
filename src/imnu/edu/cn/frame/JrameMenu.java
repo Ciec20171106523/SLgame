@@ -19,8 +19,21 @@ public class JrameMenu extends JFrame{
 	JMenu helpMenu=new JMenu();
 	JLabel user=new JLabel();
 	private MainPanel mainPanel;
+	private MineSweeper mineSweeper;
 	
-    public JrameMenu() {
+    public MainPanel getMainPanel() {
+		return mainPanel;
+	}
+	public void setMainPanel(MainPanel mainPanel) {
+		this.mainPanel = mainPanel;
+	}
+	public MineSweeper getMineSweeper() {
+		return mineSweeper;
+	}
+	public void setMineSweeper(MineSweeper mineSweeper) {
+		this.mineSweeper = mineSweeper;
+	}
+	public JrameMenu() {
     	mainPanel=new MainPanel(this);
     	initFRame();
     	this.add(mainPanel,BorderLayout.NORTH);
@@ -31,6 +44,16 @@ public class JrameMenu extends JFrame{
     	this.setResizable(false);//不可以改变大小
     	pack();//自适应大小
     	this.setVisible(true);//可见   	
+    }
+    public void restart() {
+    	this.remove(mainPanel);
+        this.remove(user);
+        mainPanel=new MainPanel(this);
+        this.add(mainPanel,BorderLayout.NORTH);
+        mineSweeper=new MineSweeper(this);
+        this.add(mineSweeper,BorderLayout.CENTER);
+        pack();
+        validate();//刷新窗口
     }
     public void initFRame() {
     	gameMenu.setText("游戏(G)");

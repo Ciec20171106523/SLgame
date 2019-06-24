@@ -2,6 +2,8 @@ package imnu.edu.cn.frame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -29,12 +31,24 @@ public class MainPanel extends JPanel{
 		this.setBackground(Color.lightGray);
 		newGame=new JLabel();
 		newGame.setIcon(tools.iiface0);
+		newGame.addMouseListener(new MouseAdapter(){
+		     public void mousePressed(MouseEvent e) {
+		    	 newGame.setIcon(tools.iiface1);
+		     }
+		     @Override
+		    public void mouseReleased(MouseEvent e) {
+		    	// TODO Auto-generated method stub
+		    	newGame.setIcon(tools.iiface0);
+		    	MainPanel.this.mf.restart();
+		    	
+		    }
+		});
 		
 		totalBobmG=new JLabel();
 		totalBobmS=new JLabel();
 		totalBobmB=new JLabel();
 		
-		setTotalMine(10);
+		setTotalMine(tools.totalMine);
 		
 		usedtimeS=new JLabel();
 		usedtimeS.setIcon(tools.timeCount[0]);
@@ -46,9 +60,13 @@ public class MainPanel extends JPanel{
 		usedtimeB.setIcon(tools.timeCount[0]);
 		
 		b.add(totalBobmB);
-		b.add(totalBobmG);
 		b.add(totalBobmS);
+		b.add(totalBobmG);
 		
+		b.add(Box.createVerticalStrut(35));//高度
+		b.add(Box.createGlue());//填充
+		
+		b.add(newGame);
 		b.add(Box.createVerticalStrut(35));
 		b.add(Box.createGlue());
 			
