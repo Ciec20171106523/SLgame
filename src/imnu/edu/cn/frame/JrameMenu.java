@@ -20,8 +20,14 @@ public class JrameMenu extends JFrame{
 	JLabel user=new JLabel();
 	private MainPanel mainPanel;
 	private MineSweeper mineSweeper;
-	
-    public MainPanel getMainPanel() {
+	private boolean isStart;
+    public boolean isStart() {
+		return isStart;
+	}
+	public void setStart(boolean isStart) {
+		this.isStart = isStart;
+	}
+	public MainPanel getMainPanel() {
 		return mainPanel;
 	}
 	public void setMainPanel(MainPanel mainPanel) {

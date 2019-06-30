@@ -5,13 +5,19 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-
-
+import imnu.edu.cn.listen.MouseListener;
 import imnu.edu.cn.tools.tools;
 
 public class MineSweeper extends JPanel{
     JrameMenu mf;//雷快
     private MineLabel mineLabel[][];
+    private MouseListener mouseListener;
+	public MouseListener getMouseListener() {
+		return mouseListener;
+	}
+	public void setMouseListener(MouseListener mouselistener) {
+		this.mouseListener = mouselistener;
+	}
 	public JrameMenu getMf() {
 		return mf;
 	}
