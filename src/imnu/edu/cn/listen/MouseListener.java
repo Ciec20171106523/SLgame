@@ -11,6 +11,7 @@ import imnu.edu.cn.frame.MineLabel;
 import imnu.edu.cn.tools.tools;
 
 public class MouseListener extends MouseAdapter{
+
     JrameMenu mf;
     private int mousePressedCount;
     private int expendedCount;
@@ -31,7 +32,7 @@ public class MouseListener extends MouseAdapter{
     		mf.getMineSweeper().buildMine(x, y);
     	}
     	if(e.getButton()==e.BUTTON1) {
-    		if(!mineLabel.isEnabled()&&!mineLabel.isFlag()) {
+    		if(!mineLabel.isExpanded()&&!mineLabel.isFlag()) {
     			if(mineLabel.getRightClickCount()==2) {
     				mineLabel.setIcon(tools.iiask1);
     			}else {
@@ -53,13 +54,22 @@ public class MouseListener extends MouseAdapter{
     	int y=mineLabel.getColIndex();
     	int i=e.getModifiers();
     	if(i==InputEvent.BUTTON1_MASK) {
-    		if(!mineLabel.isEnabled()&&!mineLabel.isFlag()) {
+    		if(!mineLabel.isExpanded()&&!mineLabel.isFlag()) {
     			if(!mf.isStart()) {
     				mf.setStart(true);
     			}
     			if(mineLabel.isMine()&&!mineLabel.isFlag()) {    				
-    				openMine(x,y);    				
+    				openMine(x,y);  
+    				mf.getMainPanel().getNewGame().setIcon(tools.iiface3);
+    				mf.setStart(false);
+    			}else {
+    				mf.getMainPanel().getNewGame().setIcon(tools.iiface0);
+    				open(x,y);
+    				isMind();
+    				
     			}
+    		}else if(mineLabel.isExpanded()) {
+    			mf.getMainPanel().getNewGame().setIcon(tools.iiface0);
     		}
     	}
 }
@@ -67,28 +77,69 @@ public class MouseListener extends MouseAdapter{
 		for (int m = 0; m < tools.totalx; m++) {
 			for (int n = 0; n < tools.totaly; n++) {
 				MineLabel mineLabel = mf.getMineSweeper().getMineLabel()[m][n];
-				//是雷的情况  且不是旗子
+								
 				if (mineLabel.isMine() && !mineLabel.isFlag()) {
-
+                 //是雷的情况却不是旗子
 					if (i == m && j == n) {
-
 						mineLabel.setIcon(tools.iiblood);
 					} else {
 						mineLabel.setIcon(tools.iimine);
-					}
-					
+					}					
 				} else if (!mineLabel.isMine() && mineLabel.isFlag()) {
 					mineLabel.setIcon(tools.iierror);
 					mf.getMainPanel().getNewGame()
-					.setIcon(tools.iiface3);
-					
+					.setIcon(tools.iiface3);					
 					//sartframe.getTimer().stop();
-					mf.setStart(false);
-					
+					mf.setStart(false);					
 				}
 				mineLabel.removeMouseListener(mf.getMineSweeper()
 						.getMouseListener());
 			}
 		}
+    }
+    private void open(int rowIndex, int colIndex) {
+		MineLabel mineLabel = mf.getMineSweeper().getMineLabel()[rowIndex][colIndex];
+		if (!mineLabel.isExpanded() && !mineLabel.isFlag()) {
+			int count = mineLabel.getMineCount();
+			mineLabel.setIcon(tools.mineCount[count]);
+			mineLabel.setExpanded(true);
+			expendedCount++;
+			if (count == 0) {
+				for (int x = Math.max(rowIndex - 1, 0); x <= Math.min(
+						rowIndex + 1, tools.totalx - 1); x++) {
+					for (int y = Math.max(colIndex - 1, 0); y <= Math.min(
+							colIndex + 1, tools.totaly - 1); y++) {
+						open(x, y);
+					}
+				}
+			}
+		}
 	}
+	public void isMind() {
+		// TODO Auto-generated method stubt;
+		if (tools.totalx * tools.totaly - expendedCount == tools.totalMine) {
+			for (int g = 0; g < tools.totalx; g++)
+				for (int h = 0; h < tools.totaly; h++) {
+					if (mf.getMineSweeper().getMineLabel()[g][h].isMine()
+							&& !mf.getMineSweeper().getMineLabel()[g][h]
+									.isFlag()) {
+						mf.getMineSweeper().getMineLabel()[g][h]
+								.setIcon(tools.iiflag);
+					}
+					// 
+					mf.getMineSweeper().getMineLabel()[g][h]
+							.removeMouseListener(mf.getMineSweeper()
+									.getMouseListener());
+				}
+			mf.getMainPanel().getNewGame().setIcon(tools.iiface4);
+
+			mf.getMainPanel().setTotalMine(0);
+
+			//sartframe.getTimer().stop();
+		    //	new Win(sartframe);		 
+			mf.setStart(false);
+		}
+
+	}
+
 }
