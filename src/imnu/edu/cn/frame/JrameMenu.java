@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.Timer;
 
 import imnu.edu.cn.tools.tools;
 
@@ -21,7 +22,21 @@ public class JrameMenu extends JFrame{
 	private MainPanel mainPanel;
 	private MineSweeper mineSweeper;
 	private boolean isStart;
-    public boolean isStart() {
+	private Timer timer;
+	private Timers timers;
+    public Timer getTimer() {
+		return timer;
+	}
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
+	public Timers getTimers() {
+		return timers;
+	}
+	public void setTimers(Timers timers) {
+		this.timers = timers;
+	}
+	public boolean isStart() {
 		return isStart;
 	}
 	public void setStart(boolean isStart) {
@@ -48,7 +63,10 @@ public class JrameMenu extends JFrame{
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.setLocationRelativeTo(null);//居中
     	this.setResizable(false);//不可以改变大小
-    	pack();//自适应大小
+    	tools.time=0;
+    	timers=new Timers(mainPanel);
+    	timer=new Timer(1000,timers);
+    	pack();//自适应大小    	
     	this.setVisible(true);//可见   	
     }
     public void restart() {
@@ -59,6 +77,9 @@ public class JrameMenu extends JFrame{
         mineSweeper=new MineSweeper(this);
         this.add(mineSweeper,BorderLayout.CENTER);
         pack();
+        tools.time=0;
+    	timers=new Timers(mainPanel);
+    	timer=new Timer(1000,timers);
         validate();//刷新窗口
     }
     public void initFRame() {

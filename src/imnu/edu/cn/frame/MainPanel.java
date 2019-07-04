@@ -81,10 +81,16 @@ public class MainPanel extends JPanel{
 	   int g=count%10;
 	   int s=count/10%10;
 	   int b=count/100;
-	   
+	   if(count<0) {
+		   totalBobmG.setIcon(tools.timeCount[-g]);
+		   totalBobmS.setIcon(tools.timeCount[-s]);
+		   totalBobmB.setIcon(tools.timeCount[10]);
+	   }else {
 	   totalBobmG.setIcon(tools.timeCount[g]);
 	   totalBobmS.setIcon(tools.timeCount[s]);
 	   totalBobmB.setIcon(tools.timeCount[b]);
+	   }
+	   
    }
 	public JLabel getNewGame() {
 		return newGame;

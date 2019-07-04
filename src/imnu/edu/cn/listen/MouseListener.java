@@ -43,6 +43,27 @@ public class MouseListener extends MouseAdapter{
     		if(mineLabel.isEnabled()) {
     			mf.getMainPanel().getNewGame().setIcon(tools.iiface0);
     		}
+    	}else if(e.getButton()==e.BUTTON3&&!mineLabel.isExpanded()) {
+    		int ClickCount=mineLabel.getRightClickCount();
+    		ClickCount++;
+    		if(ClickCount==1) {
+    			mineLabel.setIcon(tools.iiflag);
+    			mineLabel.setRightClickCount(ClickCount);
+    			mineLabel.setFlag(true);
+    			temp--;
+    			mf.getMainPanel().setTotalMine(temp);
+    			
+    		}else if(ClickCount==2) {
+    			mineLabel.setIcon(tools.iiask0);
+    			mineLabel.setRightClickCount(ClickCount);
+    			mineLabel.setFlag(false);
+    			temp++;
+    			mf.getMainPanel().setTotalMine(temp);
+    			
+    		}else if(ClickCount==3) {
+    			mineLabel.setIcon(tools.iiblank);
+    			mineLabel.setRightClickCount(0);
+    		}			
     	}
     }
 	
@@ -56,12 +77,15 @@ public class MouseListener extends MouseAdapter{
     	if(i==InputEvent.BUTTON1_MASK) {
     		if(!mineLabel.isExpanded()&&!mineLabel.isFlag()) {
     			if(!mf.isStart()) {
+    				mf.getTimer().start();
     				mf.setStart(true);
     			}
     			if(mineLabel.isMine()&&!mineLabel.isFlag()) {    				
     				openMine(x,y);  
     				mf.getMainPanel().getNewGame().setIcon(tools.iiface3);
+    				mf.getTimer().stop();
     				mf.setStart(false);
+    				
     			}else {
     				mf.getMainPanel().getNewGame().setIcon(tools.iiface0);
     				open(x,y);
@@ -71,7 +95,7 @@ public class MouseListener extends MouseAdapter{
     		}else if(mineLabel.isExpanded()) {
     			mf.getMainPanel().getNewGame().setIcon(tools.iiface0);
     		}
-    	}
+    	}    	
 }
     public void openMine(int i, int j) {
 		for (int m = 0; m < tools.totalx; m++) {
@@ -79,7 +103,6 @@ public class MouseListener extends MouseAdapter{
 				MineLabel mineLabel = mf.getMineSweeper().getMineLabel()[m][n];
 								
 				if (mineLabel.isMine() && !mineLabel.isFlag()) {
-                 //是雷的情况却不是旗子
 					if (i == m && j == n) {
 						mineLabel.setIcon(tools.iiblood);
 					} else {

@@ -20,7 +20,10 @@ public class tools {
 			timeCount[i]=new ImageIcon("./image/d"+i+".gif");
 		}
 	}
-	
+	public static int time=0;
+	public static int time1=999;
+	public static int time2=999;
+	public static int time3=999;
 	public static ImageIcon iiconTemp = new ImageIcon("./image/icon.gif");
 
 	public static Image iicon = iiconTemp.getImage();
