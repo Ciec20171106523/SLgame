@@ -115,21 +115,21 @@ public class ShowWin extends JDialog {
 		}
 		public void init(){
 			HeroListener heroListener = new HeroListener();
-			jlabel1 = new JLabel(" ����");
-			jlabel2 = new JLabel(" �ɼ�");
-			jlabel3 = new JLabel(" ���");
-			jlabel4 = new JLabel(" ������");
-			jlabel5 = new JLabel(" �м���");
-			jlabel6 = new JLabel(" �߼���");
+			jlabel1 = new JLabel(" 级别");
+			jlabel2 = new JLabel(" 成绩");
+			jlabel3 = new JLabel(" 玩家");
+			jlabel4 = new JLabel("  初级：");
+			jlabel5 = new JLabel("  中级：");
+			jlabel6 = new JLabel("  高级：");
 			time1 = new JLabel(""+tools.time1);
 			time2 = new JLabel(""+tools.time2);
 			time3 = new JLabel(""+tools.time3);
 			name1 = new JLabel(" "+tools.name1);
 			name2 = new JLabel(" "+tools.name2);
 			name3 = new JLabel(" "+tools.name3);
-			jbutton1=new JButton("ȷ��");
+			jbutton1=new JButton("确定");
 			jbutton1.addActionListener(heroListener);
-			jbutton2=new JButton("��������");
+			jbutton2=new JButton("重新设置");
 			jbutton2.addActionListener(heroListener);
 			jpanel=new JPanel();
 			Box box1 = Box.createVerticalBox();
@@ -175,16 +175,16 @@ public class ShowWin extends JDialog {
 		class HeroListener implements ActionListener{
 			public void actionPerformed(ActionEvent e){
 				String command = e.getActionCommand();
-				if(command.equals("ȷ��")){
+				if(command.equals("确定")){
 					dispose();
 				}
 				else {
 					tools.time1 = 999;
 					tools.time2 = 999;
 					tools.time3 = 999;
-					tools.name1 = " ����";
-					tools.name2 = " ����";
-					tools.name3 = " ����";			
+					tools.name1 = "匿名";
+					tools.name2 = "匿名";
+					tools.name3 = " 匿名";			
 					time1.setText(""+tools.time1);
 					name1.setText(tools.name1);				
 					time2.setText(""+tools.time2);

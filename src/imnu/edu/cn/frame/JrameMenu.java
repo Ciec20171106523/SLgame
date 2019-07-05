@@ -86,125 +86,125 @@ public class JrameMenu extends JFrame{
         validate();//刷新窗口
     }
     public void initFRame() {
-    	gameMenu.setText("游戏(G)");
-    	gameMenu.setMnemonic('G');
+    	   gameMenu.setText("游戏(G)");
+    	   gameMenu.setMnemonic('G');
     	
-    	JMenuItem newGame=new JMenu("开局(N)");
-    	newGame.setMnemonic('N');
-    	newGame.addActionListener(new ActionListener(){   
-    		@Override
-    		public void actionPerformed(ActionEvent e) {
-    			restart();
-    		}
-    	});   	
-    	gameMenu.add(newGame);
+    	   JMenuItem newGame=new JMenuItem("开局(N)");
+    	   newGame.setMnemonic('N');
+    	   newGame.addActionListener(new ActionListener(){   
+    		   @Override
+    		   public void actionPerformed(ActionEvent e) {
+    			   restart();
+    		   }
+    	    });   	
+    	   gameMenu.add(newGame);
     	
-    	JMenuItem lowItem=new JMenu("初级(B)");
-    	lowItem.setMnemonic('B');
-    	lowItem.addActionListener(new ActionListener(){
-    	@Override
-    	public void actionPerformed(ActionEvent e) {
-    		// TODO Auto-generated method stub
-    		tools.totalx=9;
-    		tools.totaly=9;
-    		tools.totalMine=10;
-    		tools.currentLevel=tools.LOWER_LEVEL;
-    		restart();
-    	  }
-    	});
-    	gameMenu.add(lowItem);
+    	   JMenuItem lowItem=new JMenuItem("初级(B)");
+    	   lowItem.setMnemonic('B');
+    	   lowItem.addActionListener(new ActionListener(){
+    	   @Override
+    	   public void actionPerformed(ActionEvent e) {
+    		    // TODO Auto-generated method stub
+    		    tools.totalx=9;
+    		    tools.totaly=9;
+    		    tools.totalMine=10;
+    		    tools.currentLevel=tools.LOWER_LEVEL;
+    		    restart();
+    	      }
+    	     });
+    	   gameMenu.add(lowItem);
     	
-    	JMenuItem midItem=new JMenu("中级(I)");
-    	midItem.setMnemonic('I');
-    	midItem.addActionListener(new ActionListener(){
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		// TODO Auto-generated method stub
-        		tools.totalx=16;
-        		tools.totaly=16;
-        		tools.totalMine=40;
-        		tools.currentLevel=tools.MIDDLE_LEVEL;
-        		restart();
-        	  }
-        	});
-    	gameMenu.add(midItem);
+    	   JMenuItem midItem=new JMenuItem("中级(I)");
+    	   midItem.setMnemonic('I');
+    	   midItem.addActionListener(new ActionListener(){
+          	   @Override
+        	   public void actionPerformed(ActionEvent e) {
+        		   // TODO Auto-generated method stub
+        		   tools.totalx=16;
+        		   tools.totaly=16;
+        		   tools.totalMine=40;
+        		   tools.currentLevel=tools.MIDDLE_LEVEL;
+        		   restart();
+        	     }
+        	   });
+    	      gameMenu.add(midItem);
     	
-    	JMenuItem highItem=new JMenu("高级(E)");
-    	highItem.setMnemonic('E');
-    	highItem.addActionListener(new ActionListener(){
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		// TODO Auto-generated method stub
-        		tools.totalx=16;
-        		tools.totaly=30;
-        		tools.totalMine=99;
-        		tools.currentLevel=tools.HEIGHT_LEVEL;
-        		restart();
-        	  }
-        	});
-    	gameMenu.add(highItem);
+    	      JMenuItem highItem=new JMenuItem("高级(E)");
+    	      highItem.setMnemonic('E');
+    	      highItem.addActionListener(new ActionListener(){
+        	      @Override
+        	        public void actionPerformed(ActionEvent e) {
+        		    // TODO Auto-generated method stub
+        		         tools.totalx=16;
+        		         tools.totaly=30;
+        		         tools.totalMine=99;
+        	             tools.currentLevel=tools.HEIGHT_LEVEL;
+        	             restart();
+        	           }
+        	         });
+    	      gameMenu.add(highItem);
     	
-    	JMenuItem orderItem=new JMenu("自定义(C)");
-    	orderItem.setMnemonic('C');
-    	gameMenu.add(orderItem);
+    	      JMenuItem orderItem=new JMenuItem("自定义(C)");
+    	      orderItem.setMnemonic('C');
+    	       gameMenu.add(orderItem);
+    	  
+    	      JMenuItem heroItem=new JMenuItem("英雄帮(T)");
+    	      heroItem.setMnemonic('T');
+    	      heroItem.addActionListener(new ActionListener() {			
+			  @Override
+			   public void actionPerformed(ActionEvent e) {
+			     	  // TODO Auto-generated method stub
+			     	  //new Win(new MainFrame());
+			    	  new ShowWin(new JrameMenu());
+			     }
+		      });
+    	     gameMenu.add(heroItem);
     	
-    	JMenuItem heroItem=new JMenu("英雄帮(T)");
-    	heroItem.setMnemonic('T');
-    	heroItem.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//new Win(new MainFrame());
-				new ShowWin(new JrameMenu());
-			}
-		});
-    	gameMenu.add(heroItem);
-    	
-    	JMenuItem exitItem=new JMenu("退出(X)");
-    	exitItem.setMnemonic('X');
-    	exitItem.addActionListener(new ActionListener() {
+    	     JMenuItem exitItem=new JMenuItem("退出(X)");
+    	     exitItem.setMnemonic('X');
+    	    exitItem.addActionListener(new ActionListener() {
 			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			   @Override
+			   public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.exit(0);
-			}
-		});	  
-    	gameMenu.add(exitItem);  
+				   System.exit(0);
+			   }
+		    });	  
+    	   gameMenu.add(exitItem);  
     	
-    	helpMenu.setText("帮助(H)");
-    	helpMenu.setMnemonic('H');
+    	   helpMenu.setText("帮助(H)");
+    	   helpMenu.setMnemonic('H');
     	
-    	JMenuItem aboutItem=new JMenu("版权信息(A)");
-    	aboutItem.setMnemonic('A');
-    	helpMenu.add(aboutItem);
+    	   JMenuItem aboutItem=new JMenu("版权信息(A)");
+    	   aboutItem.setMnemonic('A');
+    	   helpMenu.add(aboutItem);
     	
-    	JMenuItem messtItem=new JMenu("版权号100.0000.0.001");
-    	messtItem.setMnemonic('A');
-    	aboutItem.add(messtItem);
+    	   JMenuItem messtItem=new JMenuItem("版权号100.000.00.001");
+    	   messtItem.setMnemonic('A');
+    	   aboutItem.add(messtItem);
     	
-    	JMenuItem waiguaItem=new JMenu("外挂(W)");
-    	waiguaItem.setMnemonic('W');
-    	waiguaItem.addActionListener(new ActionListener(){
+    	   JMenuItem waiguaItem=new JMenuItem("外挂(W)");
+    	   waiguaItem.setMnemonic('W');
+    	   waiguaItem.addActionListener(new ActionListener(){
     		@Override
-    		public void actionPerformed(ActionEvent e) {
+    		  public void actionPerformed(ActionEvent e) {
     			// TODO Auto-generated method stub
-    			waiGua();
-    		}
-    	});
-    	helpMenu.add(waiguaItem);
+    			  waiGua();
+    	     	}
+    	   });
+    	  helpMenu.add(waiguaItem);
     	
-    	menuBar.setSize(40,20);
-        menuBar.add(gameMenu);
-        menuBar.add(helpMenu);
-        this.setJMenuBar(menuBar); 
-        user.setIcon(tools.user);
-        this.add(user);
+    	  menuBar.setSize(40,20);
+          menuBar.add(gameMenu);
+          menuBar.add(helpMenu);
+          this.setJMenuBar(menuBar); 
+          user.setIcon(tools.user);
+          this.add(user);
     	}
-    public void waiGua() {
-    	if(this.isStart()) {
-    		MineLabel[][] m=this.getMineSweeper().getMineLabel();
-            for(int i=0;i<tools.totalx;i++) {       	
+     public void waiGua() {
+    	 if(this.isStart()) {
+    		 MineLabel[][] m=this.getMineSweeper().getMineLabel();
+             for(int i=0;i<tools.totalx;i++) {       	
             	for(int j=0;j<tools.totaly;j++){
             		if(m[i][j].isMine()) {
             			m[i][j].setIcon(tools.iihole);
