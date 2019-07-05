@@ -24,6 +24,17 @@ public class tools {
 	public static int time1=999;
 	public static int time2=999;
 	public static int time3=999;
+	public static String name1="匿名";
+	public static String name2="匿名";
+	public static String name3="匿名";
+	
+	public static final String LOWER_LEVEL = "初级";
+	public static final String MIDDLE_LEVEL = "中级";
+	public static final String HEIGHT_LEVEL = "高级";
+	public static final String CUSTOM_LEVEL = "自定义";
+	
+	public static String currentLevel = LOWER_LEVEL;
+	
 	public static ImageIcon iiconTemp = new ImageIcon("./image/icon.gif");
 
 	public static Image iicon = iiconTemp.getImage();
@@ -55,6 +66,7 @@ public class tools {
 	public static ImageIcon iimine2 = new ImageIcon("./image/mine2.gif");
 	public static ImageIcon iimine3 = new ImageIcon("./image/mine3.gif");
 	
+	public static ImageIcon iihole = new ImageIcon("./image/hole.gif");
 	public static ImageIcon iierror= new ImageIcon("./image/error.gif");
 	public static ImageIcon iiflag = new ImageIcon("./image/flag.gif");
 

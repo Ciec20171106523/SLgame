@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import imnu.edu.cn.frame.JrameMenu;
 import imnu.edu.cn.frame.MineLabel;
+import imnu.edu.cn.frame.Win;
 import imnu.edu.cn.tools.tools;
 
 public class MouseListener extends MouseAdapter{
@@ -158,8 +159,8 @@ public class MouseListener extends MouseAdapter{
 
 			mf.getMainPanel().setTotalMine(0);
 
-			//sartframe.getTimer().stop();
-		    //	new Win(sartframe);		 
+			mf.getTimer().stop();
+		    new Win(mf);		 
 			mf.setStart(false);
 		}
 

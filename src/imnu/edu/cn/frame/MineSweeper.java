@@ -53,8 +53,14 @@ public class MineSweeper extends JPanel{
 	public void buildMine(int rowx,int coly) {
 		for(int i=0;i<tools.totalMine;i++) {
 			int x=(int)(Math.random()*tools.totalx);
-			int y=(int)(Math.random()*tools.totaly);			
-			mineLabel[x][y].setMine(true);
+			int y=(int)(Math.random()*tools.totaly);		
+			if(x==rowx&&y==coly){
+				i--;
+			}else if(mineLabel[x][y].isMine()){
+				i--;
+			}else {
+				mineLabel[x][y].setMine(true);
+			}		
 		}
 		
 			for (int i = 0; i < tools.totalx; i++) {

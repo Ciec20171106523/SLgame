@@ -64,6 +64,8 @@ public class JrameMenu extends JFrame{
     	this.setLocationRelativeTo(null);//居中
     	this.setResizable(false);//不可以改变大小
     	tools.time=0;
+    	mineSweeper=new MineSweeper(this);
+    	this.add(mineSweeper);
     	timers=new Timers(mainPanel);
     	timer=new Timer(1000,timers);
     	pack();//自适应大小    	
@@ -72,6 +74,7 @@ public class JrameMenu extends JFrame{
     public void restart() {
     	this.remove(mainPanel);
         this.remove(user);
+        this.remove(mineSweeper);
         mainPanel=new MainPanel(this);
         this.add(mainPanel,BorderLayout.NORTH);
         mineSweeper=new MineSweeper(this);
@@ -88,18 +91,57 @@ public class JrameMenu extends JFrame{
     	
     	JMenuItem newGame=new JMenu("开局(N)");
     	newGame.setMnemonic('N');
+    	newGame.addActionListener(new ActionListener(){   
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+    			restart();
+    		}
+    	});   	
     	gameMenu.add(newGame);
     	
     	JMenuItem lowItem=new JMenu("初级(B)");
     	lowItem.setMnemonic('B');
+    	lowItem.addActionListener(new ActionListener(){
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		// TODO Auto-generated method stub
+    		tools.totalx=9;
+    		tools.totaly=9;
+    		tools.totalMine=10;
+    		tools.currentLevel=tools.LOWER_LEVEL;
+    		restart();
+    	  }
+    	});
     	gameMenu.add(lowItem);
     	
     	JMenuItem midItem=new JMenu("中级(I)");
     	midItem.setMnemonic('I');
+    	midItem.addActionListener(new ActionListener(){
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		// TODO Auto-generated method stub
+        		tools.totalx=16;
+        		tools.totaly=16;
+        		tools.totalMine=40;
+        		tools.currentLevel=tools.MIDDLE_LEVEL;
+        		restart();
+        	  }
+        	});
     	gameMenu.add(midItem);
     	
     	JMenuItem highItem=new JMenu("高级(E)");
     	highItem.setMnemonic('E');
+    	highItem.addActionListener(new ActionListener(){
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		// TODO Auto-generated method stub
+        		tools.totalx=16;
+        		tools.totaly=30;
+        		tools.totalMine=99;
+        		tools.currentLevel=tools.HEIGHT_LEVEL;
+        		restart();
+        	  }
+        	});
     	gameMenu.add(highItem);
     	
     	JMenuItem orderItem=new JMenu("自定义(C)");
@@ -108,6 +150,14 @@ public class JrameMenu extends JFrame{
     	
     	JMenuItem heroItem=new JMenu("英雄帮(T)");
     	heroItem.setMnemonic('T');
+    	heroItem.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//new Win(new MainFrame());
+				new ShowWin(new JrameMenu());
+			}
+		});
     	gameMenu.add(heroItem);
     	
     	JMenuItem exitItem=new JMenu("退出(X)");
@@ -135,6 +185,13 @@ public class JrameMenu extends JFrame{
     	
     	JMenuItem waiguaItem=new JMenu("外挂(W)");
     	waiguaItem.setMnemonic('W');
+    	waiguaItem.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+    			// TODO Auto-generated method stub
+    			waiGua();
+    		}
+    	});
     	helpMenu.add(waiguaItem);
     	
     	menuBar.setSize(40,20);
@@ -144,6 +201,18 @@ public class JrameMenu extends JFrame{
         user.setIcon(tools.user);
         this.add(user);
     	}
+    public void waiGua() {
+    	if(this.isStart()) {
+    		MineLabel[][] m=this.getMineSweeper().getMineLabel();
+            for(int i=0;i<tools.totalx;i++) {       	
+            	for(int j=0;j<tools.totaly;j++){
+            		if(m[i][j].isMine()) {
+            			m[i][j].setIcon(tools.iihole);
+            		}            		
+            	}
+            }
+    	}
+    }
     public static void main(String[] args) {
 		new JrameMenu();
 	}
