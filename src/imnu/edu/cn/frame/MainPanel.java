@@ -21,7 +21,7 @@ public class MainPanel extends JPanel{
     JrameMenu mf;
     public MainPanel(JrameMenu mf) {
 		this.mf=mf;
-		this.setLayout(new BorderLayout());//自适应大小
+		this.setLayout(new BorderLayout());
 		b=Box.createHorizontalBox();
 		b.setBackground(Color.darkGray);
 		Border borderOut=BorderFactory.createEmptyBorder(5,10,10,10);
@@ -63,8 +63,8 @@ public class MainPanel extends JPanel{
 		b.add(totalBobmS);
 		b.add(totalBobmG);
 		
-		b.add(Box.createVerticalStrut(35));//高度
-		b.add(Box.createGlue());//填充
+		b.add(Box.createVerticalStrut(35));
+		b.add(Box.createGlue());
 		
 		b.add(newGame);
 		b.add(Box.createVerticalStrut(35));

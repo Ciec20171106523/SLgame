@@ -61,15 +61,15 @@ public class JrameMenu extends JFrame{
     	this.setTitle("扫雷");
     	this.setIconImage(tools.iicon);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	this.setLocationRelativeTo(null);//居中
-    	this.setResizable(false);//不可以改变大小
+    	this.setLocationRelativeTo(null);
+    	this.setResizable(false);
     	tools.time=0;
     	mineSweeper=new MineSweeper(this);
     	this.add(mineSweeper);
     	timers=new Timers(mainPanel);
     	timer=new Timer(1000,timers);
-    	pack();//自适应大小    	
-    	this.setVisible(true);//可见   	
+    	pack();
+    	this.setVisible(true);
     }
     public void restart() {
     	this.remove(mainPanel);
@@ -83,7 +83,7 @@ public class JrameMenu extends JFrame{
         tools.time=0;
     	timers=new Timers(mainPanel);
     	timer=new Timer(1000,timers);
-        validate();//刷新窗口
+        validate();
     }
     public void initFRame() {
     	   gameMenu.setText("游戏(G)");
@@ -215,6 +215,5 @@ public class JrameMenu extends JFrame{
     }
     public static void main(String[] args) {
 		new JrameMenu();
-	}
-    
+	}   
 }

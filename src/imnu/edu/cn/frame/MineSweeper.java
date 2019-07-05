@@ -9,7 +9,7 @@ import imnu.edu.cn.listen.MouseListener;
 import imnu.edu.cn.tools.tools;
 
 public class MineSweeper extends JPanel{
-	JrameMenu mf;//雷快
+	JrameMenu mf;
     private MineLabel mineLabel[][];
     private MouseListener mouseListener;
 	public MouseListener getMouseListener() {

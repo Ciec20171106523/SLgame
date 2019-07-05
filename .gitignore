@@ -22,3 +22,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin/
+src/imnu/edu/cn/tools/tools.java
+src/imnu/edu/cn/listen/MouseListener.java
+src/imnu/edu/cn/frame/ShowWin.java
+src/imnu/edu/cn/frame/MineSweeper.java
+src/imnu/edu/cn/frame/MainPanel.java
+src/imnu/edu/cn/frame/JrameMenu.java
+src/imnu/edu/cn/Bean/User.java

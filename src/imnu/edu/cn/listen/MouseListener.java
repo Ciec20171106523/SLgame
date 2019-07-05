@@ -111,13 +111,10 @@ public class MouseListener extends MouseAdapter{
 					}					
 				} else if (!mineLabel.isMine() && mineLabel.isFlag()) {
 					mineLabel.setIcon(tools.iierror);
-					mf.getMainPanel().getNewGame()
-					.setIcon(tools.iiface3);					
-					//sartframe.getTimer().stop();
+					mf.getMainPanel().getNewGame().setIcon(tools.iiface3);										
 					mf.setStart(false);					
 				}
-				mineLabel.removeMouseListener(mf.getMineSweeper()
-						.getMouseListener());
+				mineLabel.removeMouseListener(mf.getMineSweeper().getMouseListener());
 			}
 		}
     }

@@ -69,7 +69,4 @@ public class tools {
 	public static ImageIcon iihole = new ImageIcon("./image/hole.gif");
 	public static ImageIcon iierror= new ImageIcon("./image/error.gif");
 	public static ImageIcon iiflag = new ImageIcon("./image/flag.gif");
-
-
-
 }

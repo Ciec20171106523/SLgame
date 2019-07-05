@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 
 import imnu.edu.cn.tools.tools;
 public class ShowWin extends JDialog {
-	//ublic class Hero extends JDialog{
 		private JLabel jlabel1;	
 		private JLabel jlabel2;
 		private JLabel jlabel3;

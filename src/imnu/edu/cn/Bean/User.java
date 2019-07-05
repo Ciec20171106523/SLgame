@@ -4,7 +4,7 @@ public class User {
      private int level;
      private int time;
      private String name;
-	public int getLevel() {
+	public int getLevel(){
 		return level;
 	}
 	public void setLevel(int level) {
